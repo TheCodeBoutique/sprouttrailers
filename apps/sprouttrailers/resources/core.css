@@ -1,0 +1,18 @@
+@import "compass/css3";
+
+.trailer-container {
+    border-left: 1px solid #313131 !important;
+    @include background-image(linear-gradient(#313131, #232323));
+    @include box-shadow(rgba(black, 0.75) 0 0 0);
+
+.core-row-image {
+    height: 190px;
+    width: 150px;
+    background-repeat: no-repeat;
+    border: 5px solid #1b1b1b !important;
+    margin: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    }
+}

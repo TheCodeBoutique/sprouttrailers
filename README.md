@@ -1,4 +1,0 @@
-sprouttrailers
-==============
-
-trailer viewing app
