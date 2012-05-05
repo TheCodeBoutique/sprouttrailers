@@ -25,14 +25,28 @@ Sprouttrailers.AuthenticatedState = SC.State.extend({
   // Actions & Events
   //
   doShowQuickPreview: function(location, trailer) {
-    Sprouttrailers.previewController.set('nowPreviewing',Sprouttrailers.doConstructorMovieUrl(location, trailer));
+    Sprouttrailers.previewController.set('nowPreviewing', Sprouttrailers.doConstructorMovieUrl(location, trailer));
     SC.PanelPane.create({
-      layout: { width: 650, height: 300, centerX: 0, centerY: 0 },
-      contentView: SC.VideoPlayerView.extend({
-        layout:{right:0,top:0,height:252,width:640},
-        childViews: ['videoView', 'mini'],
-        degradeList: ['html5','quicktime', 'flash'],
-        valueBinding:"Sprouttrailers.previewController.nowPreviewing"
+      classNames: ['movie-player'],
+      layout: { width: 850, height: 500, centerX: 0, centerY: 0 },
+      contentView:SC.View.extend({
+        backgroundColor: 'black',
+        childViews: ['video','remove'],
+        remove: SC.View.extend({
+          layout:{left:0, top: 0, height: 20, width: 20 },
+          backgroundColor: 'red',
+          mouseDown: function(evt) {
+            this.parentView.parentView.remove();
+            return YES;
+          }
+        }),
+
+        video: SC.VideoPlayerView.extend({
+          layout:{left:50,top:50,height:252,width:640},
+          childViews: ['videoView', 'mini'],
+          degradeList: ['html5','quicktime', 'flash'],
+          valueBinding:"Sprouttrailers.previewController.nowPreviewing"
+        })
       })
     }).append();
   },

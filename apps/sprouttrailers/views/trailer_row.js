@@ -18,7 +18,11 @@ Sprouttrailers.TrailerRow = SC.ScrollView.extend({
         var content = this.getPath('content');
         if (!content) return
         var img = content.get('poster');
-        context.push("<img class='core-row-image' src='%@' alt='image' />".fmt(img));
+        var poster = ['<div class="core-row-image" style="background-image:url('+img+')">','</div>'].join('');
+        var previewIcon = ['<div class="preview-button">','</div>'].join('');
+        var infoIcon = ['<div class="info-button">','</div>'].join('');
+
+        context.push(poster,previewIcon,infoIcon);
       },
       mouseDown: function() {
         Sprouttrailers.statechart.sendEvent('doShowQuickPreview', this.getPath('content.location'),2);

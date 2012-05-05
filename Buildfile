@@ -13,5 +13,6 @@ config :all, :required => [:sproutcore,"sproutcore/media"]
 
 proxy '/just_added', :to =>'trailers.apple.com' , :url => '/trailers/home/feeds/just_added.json'
 proxy '/most_pop', :to =>'trailers.apple.com' , :url => '/trailers/home/feeds/most_pop.json'
+proxy '/exclusive', :to =>'trailers.apple.com' , :url => '/trailers/home/feeds/exclusive.json'
 
 proxy '/', :to =>'api.rottentomatoes.com' , :url => '/api/public/v1.0/lists/'

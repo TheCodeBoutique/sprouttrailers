@@ -12,8 +12,12 @@ SC.mixin(Sprouttrailers, {
 
     location = location.replace('/trailers', '');
 
-    //location ,movie title, trailer(num)
-    return "http://trailers.apple.com/movies%@%@-tlr%@_r640s.mov".fmt(location, trailerTitle, trailerNumber);
+    var url = "http://trailers.apple.com/movies%@%@-tlr%@_r640s.mov".fmt(location, trailerTitle, trailerNumber);
+
+
+//    this.IsValidImageUrl(url);
+    return url;
+
 
   }
 

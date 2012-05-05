@@ -7,6 +7,8 @@ Sprouttrailers.DashboardState = SC.State.extend({
             Sprouttrailers.store.find(Sprouttrailers.MOST_POPULAR));
         Sprouttrailers.reviewsController.set('content',
             Sprouttrailers.store.find(Sprouttrailers.ROTTEN_TOMATOE));
+        Sprouttrailers.exclusiveController.set('content',
+            Sprouttrailers.store.find(Sprouttrailers.EXCLUSIVE));
     }
 });
 

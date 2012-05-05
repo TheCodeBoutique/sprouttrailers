@@ -11,16 +11,29 @@ Sprouttrailers.mainPage = SC.Page.design({
   // Add childViews to this pane for views to display immediately on page 
   // load.
   mainPane: SC.MainPane.design({
-    childViews: ['justAdded', 'mostPopular'],
+    childViews: ['titleSection', 'justAdded', 'mostPopular', 'exclusive', 'topBar'],
+
+    topBar: SC.View.extend({
+      layout: {top: 0, height: 45},
+      classNames: ['base-background'],
+
+    }),
+
+    titleSection:Sprouttrailers.TitleView.create({}),
 
     justAdded: Sprouttrailers.TrailerRow.extend({
-      layout:{left: 0, right: 0, height: 270, top: 0},
+      layout:{left: 100, right: 0, height: 240, top: 45},
       contentRowBinding: 'Sprouttrailers.justAddedController.content'
     }),
 
     mostPopular: Sprouttrailers.TrailerRow.extend({
-      layout:{left: 0, right: 0, height: 250, top: 270},
+      layout:{left: 100, right: 0, height: 240, top: 280},
       contentRowBinding: 'Sprouttrailers.mostPopularController.content'
+    }),
+
+    exclusive: Sprouttrailers.TrailerRow.extend({
+      layout:{left: 100, right: 0, height: 240, top: 520},
+      contentRowBinding: 'Sprouttrailers.exclusiveController.content'
     })
   })
 });

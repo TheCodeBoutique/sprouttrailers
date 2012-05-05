@@ -56,6 +56,8 @@ Sprouttrailers.FetchDataSource = SC.DataSource.extend({
         moveKeys = store.loadRecords(Sprouttrailers.JustAdded, body);
       } else if (query.recordType === Sprouttrailers.MostPopular) {
         moveKeys = store.loadRecords(Sprouttrailers.MostPopular, body);
+      } else if (query.recordType === Sprouttrailers.Exclusive) {
+        moveKeys = store.loadRecords(Sprouttrailers.Exclusive, body);
       } else {
         for (i = 0; i < body.length; i++) {
           body.movies[i].guid = SC.Store.generateStoreKey();
