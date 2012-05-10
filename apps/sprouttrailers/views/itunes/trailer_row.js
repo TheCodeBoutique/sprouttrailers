@@ -24,8 +24,16 @@ Sprouttrailers.TrailerRow = SC.ScrollView.extend({
 
         context.push(poster,previewIcon,infoIcon);
       },
-      mouseDown: function() {
-        Sprouttrailers.statechart.sendEvent('doShowQuickPreview', this.getPath('content.location'),2);
+      mouseDown: function(evt) {
+        if (SC.$(evt.target).hasClass('info-button')) {
+          var selectionset = SC.SelectionSet.create();
+          var item = this.content;
+          selectionset.addObject(item);
+          Sprouttrailers.justAddedController.selectObject(item);
+          Sprouttrailers.statechart.sendEvent('doEnterTrailerOverview',this.get('content'));
+        } else {
+          Sprouttrailers.statechart.sendEvent('doShowQuickPreview', this.getPath('content.location'), 2);
+        }
       }
     })
   })

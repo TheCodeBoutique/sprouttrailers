@@ -65,13 +65,18 @@ Sprouttrailers.AuthenticatedState = SC.State.extend({
 
   },
 
+  doEnterTrailerOverview: function(context) {
+    Sprouttrailers.doRunDashboardAnimation(YES);
+    this.gotoState('trailerOverview',{content:context});
+  },
+
   // ------------------------------------------------------------------------
   // View states
   //
 
-  /** @private The empty state. I don't think we need this any more? -dave */
   emptyState: SC.State.design(),
   dashboardState: SC.State.plugin('Sprouttrailers.DashboardState'),
+  trailerOverview: SC.State.plugin('Sprouttrailers.TrailerOverview'),
 
   /** @private The reservations summary state. */
 

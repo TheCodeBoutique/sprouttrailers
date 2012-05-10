@@ -1,3 +1,3 @@
-Sprouttrailers.justAddedController = SC.ArrayController.create({
+Sprouttrailers.justAddedController = SC.ArrayController.create(SC.SelectionSupport,{
 
 });

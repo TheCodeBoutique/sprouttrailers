@@ -21,19 +21,25 @@ Sprouttrailers.FetchDataSource = SC.DataSource.extend({
   fetch: function(store, query) {
     /**
      * different url
-      */
+     */
     var reviewUrl = 'movies/in_theaters.json?apikey=%@&page_limit=10'.fmt(Sprouttrailers.RottenAPI.key);
-    var iTunesUrl = '/%@'.fmt(query.recordType.urlPath);
+    var iTunesUrl = '/%@'.fmt(query.recordType.urlPath), url;
 
-    var url = (query.recordType === Sprouttrailers.RottenTomatoe) ? reviewUrl: iTunesUrl;
+    if (query.recordType === Sprouttrailers.RottenTomatoe) {
+      url = reviewUrl
+    } else if (query.recordType === Sprouttrailers.YouTube) {
+      return //need to look into data source url
+    } else {
+      url = iTunesUrl;
+    }
 
 
-      SC.Request.getUrl(url)
-        .notify(this, 'fetchDidComplete', store, query)
-        .json()
-        .send();
+    SC.Request.getUrl(url)
+      .notify(this, 'fetchDidComplete', store, query)
+      .json()
+      .send();
 
-      return YES;
+    return YES;
 
   },
 
